@@ -1,0 +1,6 @@
+{
+    "name": "meru-dairy/company-website",
+    "description": "Meru Dairy Website using MVC PHP and Tailwind CSS",
+    "type": "project",
+    "require": {}
+}
