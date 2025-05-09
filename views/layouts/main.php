@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meru Dairy Website</title>
+    <title><?php echo htmlspecialchars($title ?? 'Meru Dairy Website'); ?></title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fallback inline styles if Tailwind fails -->
+    <style>
+        .hidden { display: none; }
+        .flex { display: flex; }
+        @media (min-width: 768px) {
+            .md\\:flex { display: flex; }
+            .md\\:hidden { display: none; }
+        }
+    </style>
     <!-- Google Fonts for Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -13,15 +22,13 @@
     </style>
 </head>
 <body class="bg-gray-100">
-
-<!-- Header Section -->
-  <header class="bg-white text-indigo-800 p-4 shadow-md">
+    <!-- Header Section -->
+    <header class="bg-white text-indigo-800 p-4 shadow-md">
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo and Title -->
             <div class="flex items-center">
-                <!-- <img src="/logo.png" alt="Logo" class="h-12 w-12 mr-2" /> -->
-                 <img src="http://localhost/MeruDairyWebsite/public/assets/img/logo.png" alt="Logo" class="h-12 w-12 mr-2" />
-                <h1 class="text-2xl font-bold">Mt KENYA MILK</h1>
+                <img src="/assets/img/logo.png" alt="Logo" class="h-12 w-12 mr-2" />
+                <h1 class="text-2xl font-bold">MT KENYA MILK</h1>
             </div>
 
             <!-- Hamburger Menu (Visible on Mobile) -->
@@ -70,8 +77,52 @@
         </div>
     </header>
 
+    <!-- Main Content -->
+    <?php
+    if (isset($view) && file_exists(BASE_PATH . '/views/' . $view)) {
+        require_once BASE_PATH . '/views/' . $view;
+    } else {
+        echo '<div class="container mx-auto mt-8"><p>Page not found or view not set.</p></div>';
+    }
+    ?>
+
+    <!-- Footer Section -->
+    <footer class="bg-indigo-800 text-white py-8 mt-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Navigation Links -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="/home" class="hover:underline">Home</a></li>
+                    <li><a href="/about" class="hover:underline">About Us</a></li>
+                    <li><a href="/products" class="hover:underline">Products</a></li>
+                    <li><a href="/contact" class="hover:underline">Contact Us</a></li>
+                    <li><a href="/jobs" class="hover:underline">Job Opportunities</a></li>
+                    <li><a href="/blog" class="hover:underline">Blog</a></li>
+                    <li><a href="/csr" class="hover:underline">CSR</a></li>
+                    <li><a href="/birthday" class="hover:underline">Birthday Nominations</a></li>
+                </ul>
+            </div>
+            <!-- Contact Information -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <p class="mb-2">P.O. Box 2919 Meru-Kenya</p>
+                <p class="mb-2">Email: <a href="mailto:maziwa@merudairy.co.ke" class="hover:underline">maziwa@merudairy.co.ke</a></p>
+                <p>Phone: <a href="tel:+254710901376" class="hover:underline">0710 901376</a></p>
+            </div>
+            <!-- Additional Info (e.g., Logo or Tagline) -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Mount Kenya Milk</h4>
+                <p>The Cool Mountain Freshness</p>
+            </div>
+        </div>
+        <!-- Copyright Notice -->
+        <div class="mt-8 text-center border-t border-indigo-600 pt-4">
+            <p>© <?php echo date('Y'); ?> Meru Dairy Co-operative. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script src="/js/nav.js"></script>
 </body>
 </html>
-
-
-

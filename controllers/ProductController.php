@@ -3,10 +3,10 @@
 // Include config file
 require_once BASE_PATH . '/config.php';
 
-class HomeController {
+class ProductsController {
     public function index() {
-        $title = 'Meru Dairy Website - Home';
-        $view = 'home.php';
+        $title = 'Meru Dairy Website - Products';
+        $view = 'products.php';
         require_once BASE_PATH . '/views/layouts/main.php';
     }
 }

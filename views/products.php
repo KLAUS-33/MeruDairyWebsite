@@ -1,20 +1,6 @@
 <div class="container mx-auto mt-8">
-    <!-- Hero Section -->
-    <section class="bg-gray-200 text-center py-16 rounded-lg">
-        <h2 class="text-5xl font-bold text-indigo-800">MOUNT KENYA MILK</h2>
-        <p class="mt-4 text-lg text-gray-700">THE COOL MOUNTAIN FRESHNESS</p>
-        <button class="mt-6 bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Shop Now</button>
-        <!-- Placeholder for Product Images -->
-        <div class="mt-8 flex justify-center space-x-4">
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
-        </div>
-    </section>
-
-    <!-- Product Highlights Section -->
     <section class="mt-12">
-        <h3 class="text-3xl font-bold text-indigo-800 text-center">Product Highlights</h3>
+        <h3 class="text-3xl font-bold text-indigo-800 text-center">Our Products</h3>
         <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Product 1: Whole Milk -->
             <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">

@@ -1,12 +1,11 @@
 <?php
-
 // Include config file
 require_once BASE_PATH . '/config.php';
 
-class HomeController {
+class BlogController {
     public function index() {
-        $title = 'Meru Dairy Website - Home';
-        $view = 'home.php';
+        $title = 'Meru Dairy Website - Blog';
+        $view = 'blog.php';
         require_once BASE_PATH . '/views/layouts/main.php';
     }
 }
