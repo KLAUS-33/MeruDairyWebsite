@@ -5,8 +5,11 @@ require_once BASE_PATH . '/config.php';
 
 class HomeController {
     public function index() {
-        $title = 'Meru Dairy Website - Home';
-        $view = 'home.php';
+        $data = [
+            'title' => 'Meru Dairy Website - Home',
+            'view' => 'home.php'
+        ];
+        // Include main.php with data
         require_once BASE_PATH . '/views/layouts/main.php';
     }
 }

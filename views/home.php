@@ -1,39 +1,53 @@
-<div class="container mx-auto mt-8">
-    <!-- Hero Section -->
-    <section class="bg-gray-200 text-center py-16 rounded-lg">
-        <h2 class="text-5xl font-bold text-indigo-800">MOUNT KENYA MILK</h2>
-        <p class="mt-4 text-lg text-gray-700">THE COOL MOUNTAIN FRESHNESS</p>
-        <button class="mt-6 bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Shop Now</button>
-        <!-- Placeholder for Product Images -->
-        <div class="mt-8 flex justify-center space-x-4">
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
-            <div class="w-32 h-32 bg-gray-300 rounded-lg"></div>
+<!-- Hero Carousel (Full Width and 70vh Height) -->
+<div class="relative w-full h-[70vh] overflow-hidden">
+    <!-- Slide 1 -->
+    <section class="absolute top-0 left-0 w-full h-full bg-[url('http://localhost/MeruDairyWebsite/public/assets/img/3.jpeg')] bg-cover bg-center text-white text-center flex items-center justify-center opacity-100 transition-opacity duration-1000" data-slide="1">
+        <div class="bg-black/50 absolute inset-0 z-0"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Welcome to Mount Kenya Milk</h1>
+            <p class="text-lg md:text-xl drop-shadow-lg">The Cool Mountain Freshness</p>
         </div>
     </section>
 
-    <!-- Product Highlights Section -->
-    <section class="mt-12">
-        <h3 class="text-3xl font-bold text-indigo-800 text-center">Product Highlights</h3>
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Product 1: Whole Milk -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <img src="/assets/img/whole-milk.png" alt="Whole Milk" class="w-full h-48 object-cover rounded-t-lg">
-                <h4 class="mt-4 text-xl font-semibold text-indigo-800">Whole Milk</h4>
-                <p class="mt-2 text-gray-600">Fresh and creamy whole milk, straight from the cool mountains of Kenya.</p>
-            </div>
-            <!-- Product 2: Fermented Milk -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <img src="/assets/img/fermented-milk.png" alt="Fermented Milk" class="w-full h-48 object-cover rounded-t-lg">
-                <h4 class="mt-4 text-xl font-semibold text-indigo-800">Fermented Milk</h4>
-                <p class="mt-2 text-gray-600">Tangy and nutritious fermented milk, perfect for a healthy diet.</p>
-            </div>
-            <!-- Product 3: Yoghurt -->
-            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <img src="/assets/img/yoghurt.png" alt="Yoghurt" class="w-full h-48 object-cover rounded-t-lg">
-                <h4 class="mt-4 text-xl font-semibold text-indigo-800">Yoghurt</h4>
-                <p class="mt-2 text-gray-600">Delicious and creamy yoghurt, packed with natural goodness.</p>
-            </div>
+    <!-- Slide 2 -->
+    <section class="absolute top-0 left-0 w-full h-full bg-[url('http://localhost/MeruDairyWebsite/public/assets/img/milk.jpg')] bg-cover bg-center text-white text-center flex items-center justify-center opacity-0 transition-opacity duration-1000" data-slide="2">
+        <div class="bg-black/50 absolute inset-0 z-0"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Discover Our Fresh Milk</h1>
+            <p class="text-lg md:text-xl drop-shadow-lg">Pure and Natural</p>
+        </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="absolute top-0 left-0 w-full h-full bg-[url('/assets/img/dairy-products.jpg')] bg-cover bg-center text-white text-center flex items-center justify-center opacity-0 transition-opacity duration-1000" data-slide="3">
+        <div class="bg-black/50 absolute inset-0 z-0"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Join Our Campaign!</h1>
+            <p class="text-lg md:text-xl drop-shadow-lg">Win Exciting Prizes</p>
         </div>
     </section>
 </div>
+
+<!-- JavaScript for Carousel -->
+<script>
+    const slides = document.querySelectorAll('[data-slide]');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('opacity-100', i === index);
+            slide.classList.toggle('opacity-0', i !== index);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Initial display
+    showSlide(currentSlide);
+
+    // Auto transition every 5 seconds
+    setInterval(nextSlide, 5000);
+</script>

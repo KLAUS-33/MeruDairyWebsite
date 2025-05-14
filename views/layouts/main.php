@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($title ?? 'Meru Dairy Website'); ?></title>
+    <title><?php echo htmlspecialchars($data['title'] ?? 'Meru Dairy Website'); ?></title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fallback inline styles if Tailwind fails -->
@@ -23,11 +23,12 @@
 </head>
 <body class="bg-gray-100">
     <!-- Header Section -->
+   <!-- Header Section -->
     <header class="bg-white text-indigo-800 p-4 shadow-md">
         <div class="container mx-auto flex items-center justify-between">
             <!-- Logo and Title -->
             <div class="flex items-center">
-                <img src="/assets/img/logo.png" alt="Logo" class="h-12 w-12 mr-2" />
+                <img src="http://localhost/MeruDairyWebsite/public/assets/logo/logo.png" alt="Logo" class="h-12 w-12 mr-2" />
                 <h1 class="text-2xl font-bold">MT KENYA MILK</h1>
             </div>
 
@@ -79,10 +80,16 @@
 
     <!-- Main Content -->
     <?php
-    if (isset($view) && file_exists(BASE_PATH . '/views/' . $view)) {
-        require_once BASE_PATH . '/views/' . $view;
+    if (isset($data['view']) && file_exists(BASE_PATH . '/views/' . $data['view'])) {
+        error_log("Loading view: " . BASE_PATH . '/views/' . $data['view']);
+        require_once BASE_PATH . '/views/' . $data['view'];
     } else {
-        echo '<div class="container mx-auto mt-8"><p>Page not found or view not set.</p></div>';
+        $error_message = "View not set or file not found.";
+        if (isset($data['view'])) {
+            $error_message .= " Attempted view: " . BASE_PATH . '/views/' . $data['view'];
+        }
+        error_log($error_message);
+        echo '<div class="container mx-auto mt-8"><p>' . $error_message . '</p></div>';
     }
     ?>
 
